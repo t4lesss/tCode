@@ -1,2 +1,2 @@
-# thinkCode
+# tCode
  Studies, algorithm and exercises.
