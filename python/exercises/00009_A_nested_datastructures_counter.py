@@ -16,7 +16,7 @@ import pytholino as p;
 # Creates a function that returns a dictionary with the count of each type of nested data structure.
 def isNestedCounter(array):
     if len(array) == 0:
-        return {}
+        return {};
     
     counter = {}; #Cria um dicionário vazio. #Creates an empty dictionary.
     for row in array:
@@ -34,8 +34,8 @@ def isNestedCounter(array):
 
 def isNested(array):
     if len(array) == 0:
-        return False
-    return all(isinstance(row, (list, dict, set, tuple)) for row in array)
+        return False;
+    return all(isinstance(row, (list, dict, set, tuple)) for row in array);
 
 #Para comentários, ver o arquivo 00008_A_nested_datastructures.py
 #For comments, see the file 00008_A_nested_datastructures.py

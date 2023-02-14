@@ -1,7 +1,7 @@
 """
 github.com/t4lesss 
 
-Define a function called is_nested() that checks if the passed list is nested and consists of elements of type list, dictionary, set or tuple (a list of data structures).
+Define a function called isNested() that checks if the passed list is nested and consists of elements of type list, dictionary, set or tuple (a list of data structures).
 The function should return True if the list is nested and False otherwise.
 
 
@@ -10,7 +10,7 @@ The function should return True if the list is nested and False otherwise.
 import pytholino as p;
 
 
-def is_nested(array):
+def isNested(array):
     if len(array) == 0:
         return False
     return all(isinstance(row, (list, dict, set, tuple)) for row in array)
@@ -27,8 +27,8 @@ def is_nested(array):
 # In other words, for each row of the array, checks if the row is a list, dictionary, set or tuple.
 
 
-p.p(is_nested(p.dataStructuresFAKE(20,0)));
+p.p(isNested(p.dataStructuresFAKE(20,0)));
 #Para testar a função, utilizando um gerador de estruturas de dados dentro de uma lista. A descrição da função está no arquivo 00007_B_datastructures_generator.py.
 #To test the function, using a data structures generator inside a list. The description of the function is in the file 00007_B_datastructures_generator.py.
 
-p.p(is_nested(p.dataStructuresFAKE(20,1)));
+p.p(isNested(p.dataStructuresFAKE(20,1)));
