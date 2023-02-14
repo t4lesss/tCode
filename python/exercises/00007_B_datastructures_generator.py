@@ -46,7 +46,7 @@ def dataStructuresFAKE(n, str_int = 0):
 
 
 
-fakedata_list = dataStructuresFAKE(20,0)
+fakedata_list = dataStructuresFAKE(20,1)
 
 p.p('\n'.join([str(ds) for ds in fakedata_list]));
 # Imprime a lista de dados falsos, um por linha.

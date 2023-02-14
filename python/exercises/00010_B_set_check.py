@@ -55,6 +55,9 @@ Note! You only need to define the function.
 # Para a verificação, conta-se a quantidade de elementos de cada linha e coloca-se em um conjunto. Se o conjunto tiver apenas um elemento, todos os elementos são iguais.
 # To verify, count the number of elements of each row and put it in a set. If the set has only one element, all elements are equal.
 
+# com isso, é possível saber se é possível formar uma matriz com os elementos da lista.
+# with this, it is possible to know if it is possible to form a matrix with the elements of the list.
+
 import pytholino as p;
 
 # Referente ao exercício 00006_A_nestedlists.py
