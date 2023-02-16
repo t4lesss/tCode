@@ -1,4 +1,6 @@
 """
+github.com/t4lesss 
+
 Two functions are given below:
 
 
@@ -58,7 +60,8 @@ Note! You only need to define the function.
 # com isso, é possível saber se é possível formar uma matriz com os elementos da lista.
 # with this, it is possible to know if it is possible to form a matrix with the elements of the list.
 
-import pytholino as p;
+
+from python import pytholino as p;
 
 # Referente ao exercício 00006_A_nestedlists.py
 # Related to exercise 00006_A_nestedlists.py
