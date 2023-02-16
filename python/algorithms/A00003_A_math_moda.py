@@ -15,7 +15,7 @@ from typing import Any;
 def mathMode(data_list : list) -> list[Any]: # Especifica entrada tipo lista e sapida tipo lista contendo qualquer tipo possível. # Specifies input type list and sapida type list containing any possible type.
     """
 
-    The input list may contain any Datastructure or any Datatype.
+    The data_list may contain any data structure or any datatype.
 
     >>> mathMode([2, 3, 4, 5, 3, 4, 2, 5, 2, 2, 4, 2, 2, 2])
     [2]
@@ -34,8 +34,8 @@ def mathMode(data_list : list) -> list[Any]: # Especifica entrada tipo lista e s
     if not data_list:
         return [];
     count_list  = [data_list.count(value) for value in data_list];
-    # Counts the number of times each value appears in the input list e cria uma lista espelho com os contadores.
-    # Counts the number of times each value appears in the input list and creates a mirror list with the counters.
+    # Counts the number of times each value appears in data_list and creates a mirror list with the counters.
+    # Conta o número de vezes que cada valor aparece em data_list e cria uma lista espelho com os contadores.
     
     y = max(count_list);  #Pega o valor do maior contador. # Gets the value of the largest counter.
 
