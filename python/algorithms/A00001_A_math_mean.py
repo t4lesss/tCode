@@ -8,8 +8,8 @@ github.com/t4lesss
 
     >>> mathMean([2, 4, 5, 6, 7, 8, 9, 10, 12, 15, 18, 22, 24, 26])
     12.0
-    >>> mathMean([5, 10, 15, 20, 25, 30, 35])
-    20.0
+    >>> mathMean([25, 74, 69, 85, 19, 22, 105, 87, 42, 24, 31])
+    53.0
     >>> mathMean([1, 2, 3, 4, 5, 6, 7, 8])
     4.5
 
@@ -35,7 +35,7 @@ def mathMean(numbers: list) -> float: # Especifica entrada tipo lista e sapida t
 
 def exs():
     #p.pp(mathMean([]));
-    p.pp(mathMean([25, 74, 69, 85, 19, 22, 105, 87, 42, 24, 27]));
+    p.pp(mathMean([25, 74, 69, 85, 19, 22, 105, 87, 42, 24, 31]));
 
 
 
