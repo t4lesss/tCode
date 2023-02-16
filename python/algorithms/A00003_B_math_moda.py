@@ -45,7 +45,7 @@ def mathMode(data_list : list) -> list[Any]: # Especifica entrada tipo lista e s
     # 2. SETs cannot have repeated values.
     # 3. enumerate() retorna o índice e o valor do elemento da lista, como um dicionário.
     # 3. enumerate() returns the index and value of the list element, as a dictionary.
-    # 4. Comparando, índice com índice, o if verificada se cada linha da lista espelho tem o mesmo valor do maior contador.
+    # 4. Comparando, índice com índice, o if verifica se cada linha da lista espelho tem o mesmo valor do maior contador.
     # 4. Comparing, index with index, the if verifies if each row of the mirror list has the same value as the largest counter.
     # 5. Se sim, o valor é adicionado ao SET. Como não há repetições, temos a moda.
     # 5. If so, the value is added to the SET. As there are no repetitions, we have the mode.
