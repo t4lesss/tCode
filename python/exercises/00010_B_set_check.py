@@ -61,7 +61,7 @@ Note! You only need to define the function.
 # with this, it is possible to know if it is possible to form a matrix with the elements of the list.
 
 
-from python import pytholino as p;
+import pytholino as p;
 
 # Referente ao exercício 00006_A_nestedlists.py
 # Related to exercise 00006_A_nestedlists.py
