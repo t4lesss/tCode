@@ -1,2 +1,2 @@
 # tCode
- Studies, algorithm and exercises.
+ Studies, algorithms and exercises.
