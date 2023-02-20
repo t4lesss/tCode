@@ -14,7 +14,9 @@ p = print;
 
 p('\n');
 
+
 tuples_list = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)]; p(f'Original: {tuples_list}'); p(f'Reordered: {sorted(tuples_list, key = lambda x: x[1])}');
+
 
 # As opções de ordenação são: key = lambda x: x[0] e key = lambda x: x[1], ou seja, ordenar por ordem alfabética (nomes) ou por ordem numérica (notas).
 # The sorting options are: key = lambda x: x[0] and key = lambda x: x[1], which means sorting in alphabetical order (names) or in numerical order (grades).
