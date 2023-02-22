@@ -16,7 +16,7 @@ import platform;
 import datetime;
 from functools import wraps;
 
-from memory_profiler import profile
+from memory_profiler import profile;
 
 # Formatação de texto
 import pyfiglet;
@@ -126,21 +126,21 @@ def funkMonitor(memcheck, timecheck):
 
             return resultado;
 
-        return wrapper
-    return decorator
+        return wrapper;
+    return decorator;
 
 
 
 def genListINT(inicio, fim, tamanho):
-    lista = []
+    gen_list = [];
     for i in range(tamanho):
-        lista.append(random.randint(inicio, fim))
-    return lista
+        gen_list.append(random.randint(inicio, fim));
+    return gen_list;
 
 
 
 def exs():
-    pfig('Pytholino V. 0.1', 'slant', 'primary', 200, '');
+    pfig('Pytholino V. 0.12', 'slant', 'primary', 200, '');
     pc('Primary: [primary]Texto exemplo.[/primary]');
     pc('Secondary: [secondary]Texto exemplo.[/secondary]');
     pc('Success: [success]Texto exemplo.[/success]');

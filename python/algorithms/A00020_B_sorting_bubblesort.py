@@ -49,17 +49,23 @@ def bubbleSort(plist : list, ptests: bool = False) -> list[Any]:
     >>> bubbleSort(['d', 'b', 'a', 'c'], ptests=True)
     ['a', 'b', 'c', 'd']
     """
-    n = len(plist)
+    n = len(plist);
     counter_ops = 0;
     
     if INFO == 1 and ptests == False:
         p.bl();
-        p.pc(f'[bold]Bubble Sort[/bold]')
-        p.pc(f'[bold]Initial: [info]{plist}[/info][/bold]')
+        p.pc(f'[bold]Bubble Sort[/bold]');
+        p.pc(f'[bold]Initial: [info]{plist}[/info][/bold]');
         p.bl();
 
+
+    # Se a lista tiver 1 ou menos elementos, ela já está ordenada.
+    # If the list has 1 or less elements, it is already sorted.
+    if n <= 1:
+        return plist;
+
     for i in range(n): #Ciclo. # Cycle.
-        crtl_changes = False
+        crtl_changes = False;
 
         # Uso -1 para nunca acessar o último elemento.
         # Use -1 to never access the last element.
@@ -69,37 +75,37 @@ def bubbleSort(plist : list, ptests: bool = False) -> list[Any]:
             # Troca se o elemento atual for maior que o próximo com o uso de atribuições múltiplas.
             # Swap if the current element is greater than the next with the use of multiple assignments.
             if plist[j] > plist[j + 1]:
-                plist[j], plist[j + 1] = plist[j + 1], plist[j]
-                crtl_changes = True
+                plist[j], plist[j + 1] = plist[j + 1], plist[j];
+                crtl_changes = True;
 
 
                 if INFO == 1 and ptests == False:
-                    info_l1 = f'[bold]After: [secondary]{plist[j]}[/secondary], [secondary]{plist[j+1]}[/secondary][/bold]'
-                    info_l2 = f'[bold]Before: [danger]{plist[j+1]}[/danger], [danger]{plist[j]}[/danger][/bold]'
-                    p.pc(f'{info_l1} // {info_l2}')
+                    info_l1 = f'[bold]After: [secondary]{plist[j]}[/secondary], [secondary]{plist[j+1]}[/secondary][/bold]';
+                    info_l2 = f'[bold]Before: [danger]{plist[j+1]}[/danger], [danger]{plist[j]}[/danger][/bold]';
+                    p.pc(f'{info_l1} // {info_l2}');
 
-                    p.pc(f'Partial [bold]#{counter_ops}[/bold]: [tdark]{plist}[/tdark]')
+                    p.pc(f'Partial [bold]#{counter_ops}[/bold]: [tdark]{plist}[/tdark]');
                 
 
         if not crtl_changes:
             # A plist está ordenada
-            break
+            break;
 
         if INFO == 1 and ptests == False:
             p.bl();
-            p.pc(f'[bold]Cycle #{i+1}: [info]{plist}[/info][bold]')
+            p.pc(f'[bold]Cycle #{i+1}: [info]{plist}[/info][bold]');
             p.bl(2);
 
-    return plist
+    return plist;
 
 
 
 def exs():
     #ex_list= [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
     ex_list= p.genListINT(0, 1000000, 100);
-    exsorted_list = bubbleSort(ex_list)
+    exsorted_list = bubbleSort(ex_list);
     p.bl();
-    p.pc(f'[bold]Final: [success]{exsorted_list}[/success][/bold]')
+    p.pc(f'[bold]Final: [success]{exsorted_list}[/success][/bold]');
 
 
 
