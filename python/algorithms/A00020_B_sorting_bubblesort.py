@@ -26,20 +26,6 @@ github.com/t4lesss
 4    Continue traversing the list until no element needs to be swapped.
 
 
-    >>> bubbleSort([5, 3, 8, 6, 7, 2])
-    [2, 3, 5, 6, 7, 8]
-
-    >>> bubbleSort([19, 2, 31, 45, 30, 11, 121, 27])
-    [2, 11, 19, 27, 30, 31, 45, 121]
-
-    >>> bubbleSort([1.2, 2.3, 3.4, 4.5, 5.6])
-    [1.2, 2.3, 3.4, 4.5, 5.6]
-
-    >>> bubbleSort(['d', 'b', 'a', 'c'])
-    ['a', 'b', 'c', 'd']
-
-
-
 """
 
 import pytholino_0_1 as p;
@@ -48,12 +34,25 @@ from typing import Any;
 
 INFO = 0; #Controla a exibição de informações adicionais. # Controls the display of additional information.
 
+@p.funkMonitor(memcheck=True, timecheck=True)
+def bubbleSort(plist : list, ptests: bool = False) -> list[Any]:
+    """
+    >>> bubbleSort([5, 3, 8, 6, 7, 2], ptests=True)
+    [2, 3, 5, 6, 7, 8]
 
-def bubbleSort(plist : list) -> list[Any]:
+    >>> bubbleSort([19, 2, 31, 45, 30, 11, 121, 27], ptests=True)
+    [2, 11, 19, 27, 30, 31, 45, 121]
+
+    >>> bubbleSort([1.2, 2.3, 3.4, 4.5, 5.6], ptests=True)
+    [1.2, 2.3, 3.4, 4.5, 5.6]
+
+    >>> bubbleSort(['d', 'b', 'a', 'c'], ptests=True)
+    ['a', 'b', 'c', 'd']
+    """
     n = len(plist)
     counter_ops = 0;
     
-    if INFO == 1:
+    if INFO == 1 and ptests == False:
         p.bl();
         p.pc(f'[bold]Bubble Sort[/bold]')
         p.pc(f'[bold]Initial: [info]{plist}[/info][/bold]')
@@ -74,7 +73,7 @@ def bubbleSort(plist : list) -> list[Any]:
                 crtl_changes = True
 
 
-                if INFO == 1:
+                if INFO == 1 and ptests == False:
                     info_l1 = f'[bold]After: [secondary]{plist[j]}[/secondary], [secondary]{plist[j+1]}[/secondary][/bold]'
                     info_l2 = f'[bold]Before: [danger]{plist[j+1]}[/danger], [danger]{plist[j]}[/danger][/bold]'
                     p.pc(f'{info_l1} // {info_l2}')
@@ -86,7 +85,7 @@ def bubbleSort(plist : list) -> list[Any]:
             # A plist está ordenada
             break
 
-        if INFO == 1:
+        if INFO == 1 and ptests == False:
             p.bl();
             p.pc(f'[bold]Cycle #{i+1}: [info]{plist}[/info][bold]')
             p.bl(2);
@@ -95,16 +94,18 @@ def bubbleSort(plist : list) -> list[Any]:
 
 
 
-
 def exs():
-    ex_list= [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+    #ex_list= [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+    ex_list= p.genListINT(0, 1000000, 100);
     exsorted_list = bubbleSort(ex_list)
+    p.bl();
     p.pc(f'[bold]Final: [success]{exsorted_list}[/success][/bold]')
 
 
 
 if __name__ == "__main__":
-    import doctest;
-    doctest.testmod();
     INFO = 1;
     exs();
+    
+    import doctest;
+    doctest.testmod(name='bubbleSort', verbose=True);

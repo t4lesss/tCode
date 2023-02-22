@@ -3,15 +3,20 @@
 """
 github.com/t4lesss
 
-Pytholino - V. 0.1 [ Basic Implementation ]
+Pytholino - V. 0.12 [ Basic Implementation ]
 
 
 """
 
 # Systema
 import sys;
+import time;
+import random;
 import platform;
 import datetime;
+from functools import wraps;
+
+from memory_profiler import profile
 
 # Formatação de texto
 import pyfiglet;
@@ -93,6 +98,44 @@ def tsiso():
 
 timestampISO = tsiso;
 
+
+
+def funkMonitor(memcheck, timecheck):
+    def decorator(pfunk):
+        @wraps(pfunk) # Preserva metadados da função original (nome, docstring, assinatura etc) na função gerada.
+        def wrapper(*args, **kwargs):
+            
+            if timecheck:
+                info_time = '';
+                info_process = '';
+                t0 = time.time();
+                tp0 = time.process_time();
+
+            if kwargs.get('info', True) and {kwargs.get('ptests')} != {True} and memcheck:
+                resultado = profile(pfunk, precision=4)(*args, **kwargs);
+            else:
+                resultado = pfunk(*args, **kwargs);
+
+            if timecheck:
+                tp_delta = time.process_time() - tp0;
+                t_delta = time.time() - t0;
+
+            if kwargs.get('info', True) and {kwargs.get('ptests')} != {True} and timecheck:  #If it's not a test by doctest, print time infos.
+                p(info_time := f"A função {pfunk.__name__} levou {t_delta:.6f} segundos para executar.");
+                p(info_process := f"A função {pfunk.__name__} usou {tp_delta:.6f} segundos de processamento.");
+
+            return resultado;
+
+        return wrapper
+    return decorator
+
+
+
+def genListINT(inicio, fim, tamanho):
+    lista = []
+    for i in range(tamanho):
+        lista.append(random.randint(inicio, fim))
+    return lista
 
 
 
