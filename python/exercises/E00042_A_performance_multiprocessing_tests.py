@@ -41,14 +41,14 @@ def main():
     n_start, n_end = 0, 100000000;
     n_interval = math.ceil((n_end - n_start) / n_process);
 
-    # Cria os processos
+    # Cria os processos. # Create new processes.
     process_list = [multiprocessing.Process(target=genCalcs2TESTS, args=(n_start + i*n_interval, n_start + (i+1)*n_interval)) for i in range(n_process)];
 
-    # Inicia os processos
+    # Inicia os processos. # Start new processes.
     for process in process_list:
         process.start();
 
-    # Espera os processos terminarem
+    # Espera os processos terminarem. # Wait for all processes to complete.
     for process in process_list:
         process.join();
 
