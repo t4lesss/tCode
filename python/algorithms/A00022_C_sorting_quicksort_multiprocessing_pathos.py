@@ -28,75 +28,81 @@ github.com/t4lesss
 
 
 """
+from pathos.multiprocessing import ProcessingPool as Pool
 import pytholino_0_1 as p;
 from typing import Any;
 
+
+
 INFO = 0; #Controla a exibição de informações adicionais. # Controls the display of additional information.
 
-def quickSort(plist : list, ptests: bool = False, pdebug: bool = False) -> list[Any]:
+def quickSortP(plist : list, ptests: bool = False, pdebug=False) -> list[Any]:
     """
-    >>> quickSort([5, 3, 8, 6, 7, 2], ptests=True)
+    >>> quickSortP([5, 3, 8, 6, 7, 2], ptests=True)
     [2, 3, 5, 6, 7, 8]
 
-    >>> quickSort([19, 2, 31, 45, 30, 11, 121, 27], ptests=True)
+    >>> quickSortP([19, 2, 31, 45, 30, 11, 121, 27], ptests=True)
     [2, 11, 19, 27, 30, 31, 45, 121]
 
-    >>> quickSort([1.2, 2.3, 3.4, 4.5, 5.6], ptests=True)
+    >>> quickSortP([1.2, 2.3, 3.4, 4.5, 5.6], ptests=True)
     [1.2, 2.3, 3.4, 4.5, 5.6]
 
-    >>> quickSort(['d', 'b', 'a', 'c'], ptests=True)
+    >>> quickSortP(['d', 'b', 'a', 'c'], ptests=True)
     ['a', 'b', 'c', 'd']
     """
     n = len(plist);
 
     if not plist or n < 2:
-        return plist;
+        return plist
 
     pivot = plist[0];
 
-
     if INFO == 1 and ptests == False and pdebug == True:
-        p.p(f'Pivot:  [info]{pivot}[/info]');
-    
-    # Utilizo uma ab ordagem mais compacta e mais identificada com o jeito python de resolver problemas, list comprehension.
-    # I use a more compact approach and more identified with the python way of solving problems, list comprehension.
+        p.p(f'Pivot:  [info]{pivot}[/info]'); 
+  
+    # Um teste de implementação através de paralelismo, recursão e funções lambda com lists comprehensions utilizando o módulo pathos.multiprocessing.
+    # An implementation test through parallelism, recursion and lambda functions with lists comprehensions using the pathos.multiprocessing module.
 
-    lower_list = [i for i in plist[1:] if i < pivot];
-    higher_list = [j for j in plist[1:] if j >= pivot];
+    # O resultado é um desastre, o tempo de execução é inumeras vezes maior que o do algoritmo sequencial.
+    # The result is a disaster, the execution time is many times greater than that of the sequential algorithm.
 
+    # Não façam isso em casa, crianças.
+    # Don't do this at home, kids.
 
-    if INFO == 1 and ptests == False and pdebug == True:
-         p.p(partial_list := lower_list + [pivot] + higher_list);
-         p.bl();
+    with Pool() as pool:
+        lower_list = pool.map(lambda i: i, [i for i in plist[1:] if i < pivot])
+        higher_list = pool.map(lambda j: j, [j for j in plist[1:] if j >= pivot])
 
+        if INFO == 1 and ptests == False and pdebug == True:
+            p.p(partial_list := lower_list + [pivot] + higher_list);
+            p.bl();
 
-    return quickSort(lower_list) + [pivot] + quickSort(higher_list);
+    return quickSortP(lower_list) + [pivot] + quickSortP(higher_list)
+
 
 
 @p.funkMonitor(memcheck=True, timecheck=True)
 def exs():
     #ex_list = [5, 3, 8, 6, 7, 2, 9, 11, 12];
     ex_list= p.genListINT(0, 1000000, 10000);
-    print(quickSort(ex_list));
+    p.p(quickSortP(ex_list));
     p.bl();
 
 
 
 if __name__ == '__main__':
+
     import doctest;
-    doctest.testmod(name='quickSort', verbose=True);
+    doctest.testmod(name='quickSortP', verbose=True);
     p.bl(2);
-    
+
     INFO = 1;
     exs();
     
 
+"""
+A função exs levou 136.590569 segundos para executar.
 
+"""
 
     
-"""
-
-A função exs levou 0.942441 segundos para executar.
-A função exs usou 0.875000 segundos de processamento.
- 
-"""
